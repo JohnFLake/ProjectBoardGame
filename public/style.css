@@ -1,0 +1,181 @@
+body{
+	margin: 0px;
+	padding: 0px;
+}
+
+button {
+	width:100px;
+	height: 50px;
+	color: blue;
+}
+
+p {
+	font-size: 15px;
+	text-align: center;
+}
+
+h1 {
+	font-family: serif;
+}
+
+#header {
+	text-align: center; 
+	font-size: 15; 
+}
+
+#footer{
+	clear: both;
+	height: 100px;
+	padding-top: 50px;
+}
+
+#menu-bar{
+	text-align: center; 
+	font-size: 15; 
+}
+
+
+#rules{
+	margin: auto;
+	width: 400px;
+	height: 300px;
+}
+#submit-content{
+	text-align: center;
+	margin: auto;
+	width: 800px;
+	height: 600px;
+	border-radius: 3px;
+	background: white; }
+
+
+#content{
+	position: relative;
+	text-align: center;
+	padding-top: 20px;
+	margin: auto;
+	width: 600px;
+	height: 600px;
+}
+
+
+#center-header{
+	margin: auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	height: 90px;
+}
+
+#center-footer{
+	margin: auto;
+	clear: both;
+	padding-top: 50px;
+	padding-bottom: 20px;
+	height: 100px;
+}
+
+#center-content{
+	margin: auto;
+	height: 500px;
+}
+
+#card-data{
+	float: right;
+	margin: auto;
+	height: 300px;
+	width: 520px;
+	border-radius: 15px;
+	border-style: solid; 
+	border-color: red; 
+	padding-bottom: 30px;
+}
+
+#card-scenario{
+	height: 100px;
+}
+
+#card-title{
+	height: 50px;
+	font-size: 32px;
+}
+
+#card-voting{
+	float: left;
+	width: 50px;
+	height: 250px;
+	padding-top: 100px;
+}
+#card-upvote{
+	float: left;
+	background-image: url("/graphics/upvote.png");
+	width: 50px;
+	height: 50px;
+	background-size: 50px 50px;
+}
+
+#card-downvote{
+	float: left;
+	background-image: url("/graphics/downvote.png");
+	width: 50px;
+	height: 50px;
+	background-size: 50px 50px;
+}
+#card-score{
+	float: left;
+	padding: 30%;
+	height: 50px;
+	width: 50px;
+}
+
+#card-upvote-score{
+	visibility: hidden;
+	width: 0px;
+	height: 0px;
+}
+
+#card-id{
+	visibility: hidden;
+	width: 0px;
+	height: 0px;
+}
+
+
+#player-scoring{
+	padding-top: 10px;
+	margin: auto;
+	clear: both;
+	height: 100px;
+	width: 400px;
+}
+#draw-button{
+	height: 100px;
+	width: 200px;
+}
+
+.player-scorecard{
+	float: left;
+	margin: auto;
+	width: 100px;
+	height: 75px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.player-score{
+	height:25px;
+	width: 75px;
+}
+
+
+.player-backward{
+	height: 25px;
+	width: 75px;
+	background-color: blue;
+}
+
+.player-forward{
+	height: 25px;
+	width: 75px;
+	background-color: red;
+}
+
