@@ -7,7 +7,7 @@ var cardScore;
 	When the page loads, this message will display
 */
 window.onload = function myFunc(){
-	document.getElementById('content').innerHTML=`<h1> Welcome to the Board Game!?</h1>
+	document.getElementById('content').innerHTML=`<h1> Welcome to the Game!</h1>
 		<div id="rules">
 		<ol style="text-align:left">
 			<li>You start on space #1.  The goal is to reach space #25.</li>
@@ -64,10 +64,10 @@ function drawCard(){
 	getCardAjax(function(output){
 		console.log(output);
 		console.log(output.scenario);
-		$("#card-scenario").html(output.scenario);
-		$("#card-title").html(output.title);
+		$("#card-scenario").html("<pre>" + output.scenario + "</pre>");
+		$("#card-title").html("<pre>" + output.title + "</pre>");
 		$("#card-score").html(output.score); 
-		$("#card-id").html(output.cardID);
+		$("#card-id").html(output.id);
 		cardScore = output.score;
 	});
 	updateCardScoreAjax(id,score,function(output){
