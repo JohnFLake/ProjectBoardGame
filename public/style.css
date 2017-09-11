@@ -18,6 +18,13 @@ h1 {
 	font-family: serif;
 }
 
+#wrapper{
+	margin: auto;
+	width: 900px;
+	height: 1000px;
+
+}
+
 #header {
 	text-align: center; 
 	font-size: 15; 
@@ -48,8 +55,39 @@ h1 {
 	border-radius: 3px;
 	background: white; }
 
+#board{
+	height: 500px;
+	width: 200px;
+	float: right;
+	border-radius: 15px;
+	border-style: solid; 
+	border-color: blue; 
+}
+#top-board-row{
+	width: 200px;
+	height: 100px;
+	margin: auto;
+}
+#bottom-board-row{
+	width: 200px;
+	height: 100px;
+	clear: both;
+}
+#left-board-col{
+	display: inline;
+	width: 50px;
+	height: 300px;
+	float: left;
+}
+#right-board-col{
+	display: inline;
+	float: right;
+	width: 50px;
+	height: 300px;
+}
 
 #content{
+	float: left; 
 	position: relative;
 	text-align: center;
 	padding-top: 20px;
@@ -169,13 +207,15 @@ h1 {
 
 .player-backward{
 	height: 25px;
-	width: 75px;
+	width: 50px;
 	background-color: blue;
+	background-size: 75px 25px;
 }
 
 .player-forward{
 	height: 25px;
-	width: 75px;
-	background-color: red;
+	width: 50px;
+	background-color: red; 
+	background-size: 75px 25px;
 }
 

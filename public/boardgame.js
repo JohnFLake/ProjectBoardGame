@@ -82,7 +82,6 @@ function gameplay(){
 	Setup board
 	*/
 	document.getElementById('content').innerHTML=`
-		<!--this is where the game will go. -->
 		<div id="center-content">
 			<!--<div id="center-header"><h1>ENJOY!</h1></div>-->
 			<div id="card-data">
@@ -113,6 +112,24 @@ function gameplay(){
 		`;
 
 	}
+	//Setup the board based on the location of each player. 
+	document.getElementById('board').innerHTML=`
+		<div id="top-board-row">
+			Top;
+		</div>
+		<div id="left-board-col">
+			Left; 
+		</div>
+		<div id="right-board-col">
+			Right;
+		</div>
+		<div id="bottom-board-row">
+			Bottom;
+		</div>
+		
+
+
+	`;
 };
 
 
