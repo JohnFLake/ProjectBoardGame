@@ -55,14 +55,34 @@ h1 {
 	border-radius: 3px;
 	background: white; }
 
+#about-content{
+	text-align: center;
+	margin: auto;
+	width: 800px;
+	height: 600px;
+	border-radius: 3px;
+	background: white; }
+
+
 #board{
 	height: 500px;
 	width: 200px;
 	float: right;
-	border-radius: 15px;
 	border-style: solid; 
 	border-color: blue; 
+	border-radius: 1px;
 }
+
+.space {
+	float: left;
+	width: 50px;
+	border-width: 1px;
+	border-radius: 10px;
+	border-style: solid; 
+	border-color: blue; 
+	height: 100px;
+}
+
 #top-board-row{
 	width: 200px;
 	height: 100px;
@@ -195,8 +215,8 @@ h1 {
 	margin: auto;
 	width: 100px;
 	height: 75px;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 .player-score{
@@ -206,15 +226,15 @@ h1 {
 
 
 .player-backward{
-	height: 25px;
-	width: 50px;
+	height: 50px;
+	width: 80px;
 	background-color: blue;
 	background-size: 75px 25px;
 }
 
 .player-forward{
-	height: 25px;
-	width: 50px;
+	height: 50px;
+	width: 80px;
 	background-color: red; 
 	background-size: 75px 25px;
 }

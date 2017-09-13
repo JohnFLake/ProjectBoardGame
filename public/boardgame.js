@@ -1,3 +1,4 @@
+var scores = [1,1,1,1];
 var players = 1;
 var whosTurn = 1;
 var cardScore;
@@ -106,7 +107,6 @@ function gameplay(){
 			<div class="player-scorecard">
 			<p>Player ` + i + `</p>
 			<div onclick="forward(` + i + `)"class="player-forward" id="player-` + i + `-forward">Forward</div>
-			<div class="player-score"   id="player-` + i + `-score">0</div>
 			<div onclick="back(` + i + `)"class="player-backward" id="player-` + i + `-backward">Back</div>
 			</div>
 		`;
@@ -115,40 +115,80 @@ function gameplay(){
 	//Setup the board based on the location of each player. 
 	document.getElementById('board').innerHTML=`
 		<div id="top-board-row">
-			Top;
 		</div>
 		<div id="left-board-col">
-			Left; 
 		</div>
 		<div id="right-board-col">
-			Right;
 		</div>
 		<div id="bottom-board-row">
-			Bottom;
 		</div>
-		
-
-
 	`;
+	
+	for(i = 1; i <= 4; i++){
+		document.getElementById('top-board-row').innerHTML += `
+			<div class="space" id ="space-no-` + i + `"></div>
+		`;
+	}
+	for(i = 5; i <= 8; i++){
+		document.getElementById('right-board-col').innerHTML += `
+			<div class="space" id ="space-no-` + i + `"></div>
+		`;
+	}
+	for(i = 11; i > 8; i--){
+		document.getElementById('bottom-board-row').innerHTML += `
+			<div class="space" id ="space-no-` + i + `"></div>
+		`;
+	}
+	for(i = 14; i > 11; i--){
+		document.getElementById('left-board-col').innerHTML += `
+			<div class="space" id ="space-no-` + i + `"></div>
+		`;
+	}
+	updateBoard();
+};
+
+
+
+function clearBoard(){
+	for(i = 1; i <= 14; i++){
+		document.getElementById("space-no-" + i).innerHTML ="";
+	}
+};
+
+
+
+//Go through the scores and put the correct players in the correct place
+function updateBoard(){
+	for(i = 0; i < 4; i++){
+		document.getElementById("space-no-" + scores[i]).innerHTML += i+1 + "<br>";
+	}
 };
 
 
 
 function forward(player){
-	var score = parseInt(document.getElementById("player-" + player + "-score").innerHTML);
+	//var score = parseInt(document.getElementById("player-" + player + "-score").innerHTML);
+	var score = scores[player-1];
 	score = score+1;
-	document.getElementById("player-" + player + "-score").innerHTML = score;
-	if(score == 25){
+	scores[player-1] = score; 
+	if(score == 14){
 		document.getElementById('content').innerHTML =`<h1>Player ` + player + ` Won!</h1>`;
 	}
+	clearBoard();
+	updateBoard();
 };
 
 
 function back(player){
-	var score = parseInt(document.getElementById("player-" + player + "-score").innerHTML);
+	//var score = parseInt(document.getElementById("player-" + player + "-score").innerHTML);
+	var score = scores[player-1];
 	score = score-1;
-	console.log(score);
-	document.getElementById("player-" + player + "-score").innerHTML = score;
+	if(score <= 1){
+		score = 1;
+	}
+	scores[player-1] = score; 
+	clearBoard();
+	updateBoard();
 };
 
 
@@ -163,8 +203,6 @@ function upvote(){
 		score = 0;
 	document.getElementById("card-upvote-score").innerHTML = score;
 	document.getElementById("card-score").innerHTML = cardScore + score;
-	
-	
 }
 
 function downvote(cardID){
