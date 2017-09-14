@@ -65,45 +65,45 @@ h1 {
 
 
 #board{
-	height: 500px;
+	margin-top: 30px;
+	display: none; 
+	height: 250px;
 	width: 200px;
 	float: right;
-	border-style: solid; 
-	border-color: blue; 
-	border-radius: 1px;
 }
 
 .space {
+	word-wrap: break-word;
 	float: left;
 	width: 50px;
+	height: 50px;
 	border-width: 1px;
-	border-radius: 10px;
 	border-style: solid; 
 	border-color: blue; 
-	height: 100px;
 }
+
 
 #top-board-row{
 	width: 200px;
-	height: 100px;
+	height: 50px;
 	margin: auto;
 }
 #bottom-board-row{
 	width: 200px;
-	height: 100px;
+	height: 50px;
 	clear: both;
 }
 #left-board-col{
 	display: inline;
 	width: 50px;
-	height: 300px;
+	height: 150px;
 	float: left;
 }
 #right-board-col{
 	display: inline;
 	float: right;
 	width: 50px;
-	height: 300px;
+	height: 150px;
 }
 
 #content{
@@ -140,12 +140,12 @@ h1 {
 #card-data{
 	float: right;
 	margin: auto;
+	margin-bottom: 30px;
 	height: 300px;
 	width: 520px;
 	border-radius: 15px;
 	border-style: solid; 
 	border-color: red; 
-	padding-bottom: 30px;
 }
 
 #card-scenario{
@@ -199,15 +199,17 @@ h1 {
 
 
 #player-scoring{
-	padding-top: 10px;
-	margin: auto;
+	margin-top: 100px;
+	margin-left: 130px;
 	clear: both;
 	height: 100px;
 	width: 400px;
 }
 #draw-button{
+	margin-top: 10px;
+	margin-left: 120px;
 	height: 100px;
-	width: 200px;
+	width: 400px;
 }
 
 .player-scorecard{

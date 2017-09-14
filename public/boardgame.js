@@ -8,6 +8,7 @@ var cardScore;
 	When the page loads, this message will display
 */
 window.onload = function myFunc(){
+	$("#content").css({float: 'none'});
 	document.getElementById('content').innerHTML=`<h1> Welcome to the Game!</h1>
 		<div id="rules">
 		<ol style="text-align:left">
@@ -79,6 +80,8 @@ function drawCard(){
 
 
 function gameplay(){
+	$("#content").css({float: 'left'});
+	$('#board').fadeIn();
 	/*
 	Setup board
 	*/
@@ -129,17 +132,17 @@ function gameplay(){
 			<div class="space" id ="space-no-` + i + `"></div>
 		`;
 	}
-	for(i = 5; i <= 8; i++){
+	for(i = 5; i <= 7; i++){
 		document.getElementById('right-board-col').innerHTML += `
 			<div class="space" id ="space-no-` + i + `"></div>
 		`;
 	}
-	for(i = 11; i > 8; i--){
+	for(i = 11; i >= 8; i--){
 		document.getElementById('bottom-board-row').innerHTML += `
 			<div class="space" id ="space-no-` + i + `"></div>
 		`;
 	}
-	for(i = 14; i > 11; i--){
+	for(i = 14; i > 10; i--){
 		document.getElementById('left-board-col').innerHTML += `
 			<div class="space" id ="space-no-` + i + `"></div>
 		`;
@@ -160,7 +163,7 @@ function clearBoard(){
 //Go through the scores and put the correct players in the correct place
 function updateBoard(){
 	for(i = 0; i < 4; i++){
-		document.getElementById("space-no-" + scores[i]).innerHTML += i+1 + "<br>";
+		document.getElementById("space-no-" + scores[i]).innerHTML += i+1;
 	}
 };
 
@@ -173,6 +176,8 @@ function forward(player){
 	scores[player-1] = score; 
 	if(score == 14){
 		document.getElementById('content').innerHTML =`<h1>Player ` + player + ` Won!</h1>`;
+		$("#content").css({float: 'none'});
+		$('#board').fadeOut();
 	}
 	clearBoard();
 	updateBoard();
