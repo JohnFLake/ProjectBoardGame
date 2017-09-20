@@ -67,8 +67,8 @@ function drawCard(){
 	getCardAjax(function(output){
 		console.log(output);
 		console.log(output.scenario);
-		$("#card-scenario").html("<pre>" + output.scenario + "</pre>");
-		$("#card-title").html("<pre>" + output.title + "</pre>");
+		$("#card-scenario").html(output.scenario);
+		$("#card-title").html(output.title);
 		$("#card-score").html(output.score); 
 		$("#card-id").html(output.id);
 		cardScore = output.score;

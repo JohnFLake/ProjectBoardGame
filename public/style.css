@@ -156,6 +156,8 @@ h1 {
 }
 
 #card-data{
+	overflow: hidden;
+	word-wrap: break-word;
 	color: black;
 	float: right;
 	margin: auto;
@@ -168,13 +170,22 @@ h1 {
 	background-color: white; 
 }
 
+
+#whos-card{
+	height: 5%;
+	margin-bottom: 20px;
+}
+
 #card-scenario{
-	height: 40%;
+	margin:auto;
+	margin-top: 10px;
+	height: 60%;
+	font-size: 13px;
 }
 
 #card-title{
-	height: 40%;
-	font-size: 32px;
+	height: 15%;
+	font-size: 20px;
 }
 
 #card-voting{
@@ -200,7 +211,7 @@ h1 {
 	background-size: 100% 100%;
 }
 #card-score{
-	padding-left: 18%;
+	padding-left: 40%;
 	padding-top: 1%;
 	float: left;
 	height: 15%;
