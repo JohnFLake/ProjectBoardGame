@@ -8,11 +8,12 @@ var cardScore;
 	When the page loads, this message will display
 */
 window.onload = function myFunc(){
-	$("#content").css({float: 'none'});
-	document.getElementById('content').innerHTML=`<h1> Welcome to the Game!</h1>
+	$("#frame").css({float: 'none', margin: 'auto'});
+	$("#move-player-wrapper").css({visibility: 'hidden'});
+	document.getElementById('game-content').innerHTML=`<h1> Welcome to the Game!</h1>
 		<div id="rules">
 		<ol style="text-align:left">
-			<li>You start on space #1.  The goal is to reach space #25.</li>
+			<li>You start on space #1.  The goal is to reach space #32.</li>
 			<li>You control the game. </li>
 			<li>Every turn, you draw a card.</li>
 			<li>The card tells you what to do.</li>
@@ -24,7 +25,7 @@ window.onload = function myFunc(){
 			<li>Have fun!</li>
 		</ol>
 		<br>
-		<button onclick="gameplay()">Continue</button>
+		<button id="play-button" onclick="gameplay()">Continue</button>
 		</div>
 	`;
 };
@@ -80,13 +81,14 @@ function drawCard(){
 
 
 function gameplay(){
-	$("#content").css({float: 'left'});
-	$('#board').fadeIn();
+	$("#frame").css({float: 'left', "margin-left": '40px'});
+	$("#frame").css({"padding": "5%"});
+	$("#move-player-wrapper").css({visibility: 'visible'});
+	$("#wrapper").css({"margin": "none", "width":"100%","height":"100%"});
 	/*
 	Setup board
 	*/
-	document.getElementById('content').innerHTML=`
-		<div id="center-content">
+	document.getElementById('game-content').innerHTML=`
 			<!--<div id="center-header"><h1>ENJOY!</h1></div>-->
 			<div id="card-data">
 				<p id="whos-card"></p>
@@ -101,12 +103,10 @@ function gameplay(){
 				<div id="card-upvote-score">0</div>
 			</div>
 
-			<div id="player-scoring"></div>
-			<div id="center-footer"><button id="draw-button" onclick="drawCard()">Draw Card for Player 1</button></div>
-		</div>
+			<button id="draw-button" onclick="drawCard()">Draw Card for Player 1</button>
 	`;
 	for(i = 1; i <= 4; i++){
-		document.getElementById("player-scoring").innerHTML += `
+		document.getElementById("move-player-wrapper").innerHTML += `
 			<div class="player-scorecard">
 			<p>Player ` + i + `</p>
 			<div onclick="forward(` + i + `)"class="player-forward" id="player-` + i + `-forward">Forward</div>
@@ -115,46 +115,59 @@ function gameplay(){
 		`;
 
 	}
-	//Setup the board based on the location of each player. 
-	document.getElementById('board').innerHTML=`
-		<div id="top-board-row">
-		</div>
-		<div id="left-board-col">
-		</div>
-		<div id="right-board-col">
-		</div>
-		<div id="bottom-board-row">
-		</div>
-	`;
-	
-	for(i = 1; i <= 4; i++){
-		document.getElementById('top-board-row').innerHTML += `
-			<div class="space" id ="space-no-` + i + `"></div>
-		`;
+	for(i = 1; i <= 9; i++){
+		if(i % 2 == 0)
+			document.getElementById('top-board-row').innerHTML += `
+				<div class="row-space even" id ="space-no-` + i + `"></div>
+			`;
+		else
+			document.getElementById('top-board-row').innerHTML += `
+				<div class="row-space odd" id ="space-no-` + i + `"></div>
+			`;
 	}
-	for(i = 5; i <= 7; i++){
-		document.getElementById('right-board-col').innerHTML += `
-			<div class="space" id ="space-no-` + i + `"></div>
-		`;
+	for(i = 10; i <= 16; i++){
+		if(i % 2 == 0)
+			document.getElementById('right-board-col').innerHTML += `
+				<div class="col-space even" id ="space-no-` + i + `"></div>
+			`;
+		else
+			document.getElementById('right-board-col').innerHTML += `
+				<div class="col-space odd" id ="space-no-` + i + `"></div>
+			`;
 	}
-	for(i = 11; i >= 8; i--){
-		document.getElementById('bottom-board-row').innerHTML += `
-			<div class="space" id ="space-no-` + i + `"></div>
-		`;
+	for(i = 25; i >= 17; i--){
+		if(i % 2 == 0)
+			document.getElementById('bottom-board-row').innerHTML += `
+				<div class="row-space even" id ="space-no-` + i + `"></div>
+			`;
+		else
+			document.getElementById('bottom-board-row').innerHTML += `
+				<div class="row-space odd" id ="space-no-` + i + `"></div>
+			`;
 	}
-	for(i = 14; i > 10; i--){
-		document.getElementById('left-board-col').innerHTML += `
-			<div class="space" id ="space-no-` + i + `"></div>
-		`;
+	for(i = 32; i >= 26; i--){
+		if(i % 2 == 0)
+			document.getElementById('left-board-col').innerHTML += `
+				<div class="col-space even" id ="space-no-` + i + `"></div>
+			`;
+		else
+			document.getElementById('left-board-col').innerHTML += `
+				<div class="col-space odd" id ="space-no-` + i + `"></div>
+			`;
 	}
+	clearBoard();
 	updateBoard();
 };
 
 
 
 function clearBoard(){
-	for(i = 1; i <= 14; i++){
-		document.getElementById("space-no-" + i).innerHTML ="";
+	for(i = 1; i <= 32; i++){
+		document.getElementById("space-no-" + i).innerHTML =`<p class="space-no"> ` + i + `</p>`;
+	}
+	for(i = 0; i < 4; i++){
+		var p = i + 1;
+		document.getElementById("space-no-" + scores[i]).innerHTML ="";
 	}
 };
 
@@ -163,7 +176,8 @@ function clearBoard(){
 //Go through the scores and put the correct players in the correct place
 function updateBoard(){
 	for(i = 0; i < 4; i++){
-		document.getElementById("space-no-" + scores[i]).innerHTML += i+1;
+		var p = i + 1;
+		document.getElementById("space-no-" + scores[i]).innerHTML += `<div class="piece" id="player-piece-` + p + `"> ` + p + `</div>`;
 	}
 };
 
@@ -174,10 +188,8 @@ function forward(player){
 	var score = scores[player-1];
 	score = score+1;
 	scores[player-1] = score; 
-	if(score == 14){
-		document.getElementById('content').innerHTML =`<h1>Player ` + player + ` Won!</h1>`;
-		$("#content").css({float: 'none'});
-		$('#board').fadeOut();
+	if(score == 32){
+		document.getElementById('game-content').innerHTML =`<h1>Player ` + player + ` Won!</h1>`;
 	}
 	clearBoard();
 	updateBoard();
