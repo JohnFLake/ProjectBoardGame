@@ -17,35 +17,6 @@ h1 {
 }
 
 
-#move-player-wrapper{
-	background-color: white; 
-	float: right;
-	height: 400px;
-	margin: auto;
-	margin-top: 150px;
-	margin-left: 10px;
-	margin-right: 200px;
-	width: 200px;
-	border: 10px inset #a20000; 
-}
-
-#frame{
-	float: left;
-	margin: auto;
-	margin-top: 30px;
-	margin-left: 40px;
-	margin-right: 10px;
-	width: 700px;
-	height: 700px;
-	background-size: 700px 700px;
-}
-#wrapper{
-	width: 700px;
-	height: 700px;
-	border: 20px inset;
-	border-color: #aa1212;
-}
-
 #header {
 	margin: auto;
 	text-align: center; 
@@ -69,6 +40,7 @@ h1 {
 	width: 400px;
 	height: 300px;
 }
+
 #submit-content{
 	text-align: center;
 	margin: auto;
@@ -90,6 +62,35 @@ h1 {
 	border-radius: 3px;
 }
 
+
+#move-player-wrapper{
+	background-color: white; 
+	float: right;
+	height: 400px;
+	margin: auto;
+	margin-top: 150px;
+	margin-left: 20px;
+	margin-right: 7.5%;
+	width: 20%;
+	border: 10px inset #a20000; 
+}
+
+#frame{
+	padding: 5%;
+	float: left;
+	margin: auto;
+	margin-left: 2px;
+	margin-top: 30px;
+	width: 70%;
+	height: 700px;
+}
+#wrapper{
+	margin: none;
+	width: 100%;
+	height: 100%;
+	border: 20px inset;
+	border-color: #aa1212;
+}
 
 .space-no{
 	padding-left: 3%;

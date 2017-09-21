@@ -56,6 +56,21 @@ function updateCardScoreAjax(cardID,score,updateScoreCallBack){
 	}
 };
 
+function replaceSubstring(inSource, inToReplace, inReplaceWith) {
+
+  var outString = inSource;
+  while (true) {
+    var idx = outString.indexOf(inToReplace);
+    if (idx == -1) {
+      break;
+    }
+    outString = outString.substring(0, idx) + inReplaceWith +
+      outString.substring(idx + inToReplace.length);
+  }
+  return outString;
+
+}
+
 function drawCard(){
 	var score = parseInt(document.getElementById("card-upvote-score").innerHTML);
 	var id = parseInt(document.getElementById("card-id").innerHTML);
@@ -66,23 +81,27 @@ function drawCard(){
 	document.getElementById('draw-button').innerHTML="Draw Card for Player " + whosTurn;
 	getCardAjax(function(output){
 		console.log(output);
-		console.log(output.scenario);
+		
+		output.scenario = replaceSubstring(output.scenario,"<script>","");
+		output.scenario = replaceSubstring(output.scenario,"</script>","");
+		output.title = replaceSubstring(output.title,"</script>","");
+		output.title = replaceSubstring(output.title,"<script>","");
+		console.log(output);
 		$("#card-scenario").html(output.scenario);
 		$("#card-title").html(output.title);
 		$("#card-score").html(output.score); 
-		$("#card-id").html(output.id);
+		$("#card-id").html(output.cardID);
 		cardScore = output.score;
 	});
 	updateCardScoreAjax(id,score,function(output){
-		console.log(output);
 	});
 	document.getElementById('card-upvote-score').innerHTML=0;
 };
 
 
 function gameplay(){
-	$("#frame").css({float: 'left', "margin-left": '40px'});
-	$("#frame").css({"padding": "5%"});
+	$("#frame").css({float: 'left'});
+	//$("#frame").css({"padding": "5%"});
 	$("#move-player-wrapper").css({visibility: 'visible'});
 	$("#wrapper").css({"margin": "none", "width":"100%","height":"100%"});
 	/*
