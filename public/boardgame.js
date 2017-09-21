@@ -70,6 +70,28 @@ function replaceSubstring(inSource, inToReplace, inReplaceWith) {
   return outString;
 
 }
+function drawAnother(){
+	var score = parseInt(document.getElementById("card-upvote-score").innerHTML);
+	var id = parseInt(document.getElementById("card-id").innerHTML);
+	getCardAjax(function(output){
+		console.log(output);
+		output.scenario = replaceSubstring(output.scenario,"<script>","");
+		output.scenario = replaceSubstring(output.scenario,"</script>","");
+		output.title = replaceSubstring(output.title,"</script>","");
+		output.title = replaceSubstring(output.title,"<script>","");
+		console.log(output);
+		$("#card-scenario").html(output.scenario);
+		$("#card-title").html(output.title);
+		$("#card-score").html(output.score); 
+		$("#card-id").html(output.cardID);
+		cardScore = output.score;
+	});
+	updateCardScoreAjax(id,score,function(output){
+	});
+	document.getElementById('card-upvote-score').innerHTML=0;
+};
+
+
 
 function drawCard(){
 	var score = parseInt(document.getElementById("card-upvote-score").innerHTML);
@@ -78,7 +100,7 @@ function drawCard(){
 	whosTurn++;
 	if(whosTurn == 5)
 		whosTurn = 1;
-	document.getElementById('draw-button').innerHTML="Draw Card for Player " + whosTurn;
+	document.getElementById('draw-new').innerHTML="Draw Card for Player " + whosTurn + ".";
 	getCardAjax(function(output){
 		console.log(output);
 		
@@ -122,7 +144,8 @@ function gameplay(){
 				<div id="card-upvote-score">0</div>
 			</div>
 
-			<button id="draw-button" onclick="drawCard()">Draw Card for Player 1</button>
+			<button class = "draw-button" id="draw-another" onclick="drawAnother()">This card sucks, get me a new one.</button>
+			<button class = "draw-button" id="draw-new" onclick="drawCard()">Draw Card for Player 1.</button>
 	`;
 	for(i = 1; i <= 4; i++){
 		document.getElementById("move-player-wrapper").innerHTML += `
@@ -206,10 +229,12 @@ function forward(player){
 	//var score = parseInt(document.getElementById("player-" + player + "-score").innerHTML);
 	var score = scores[player-1];
 	score = score+1;
-	scores[player-1] = score; 
 	if(score == 32){
 		document.getElementById('game-content').innerHTML =`<h1>Player ` + player + ` Won!</h1>`;
+	}else if (score > 32){
+		score = 32;
 	}
+	scores[player-1] = score; 
 	clearBoard();
 	updateBoard();
 };

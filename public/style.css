@@ -237,11 +237,10 @@ h1 {
 	height: 25%;
 	width: 100%;
 }
-#draw-button{
+.draw-button{
 	color: white; 
 	font-size: 20px;
 	margin: auto;
-	margin-right: 5%;
 	height: 40%;
 	width: 30%;
 	background-color: #aa0000;
@@ -249,6 +248,16 @@ h1 {
 	border: ridge;
 }
 
+
+#draw-another{
+	float: left; 
+	margin-left: 15%;
+}
+
+#draw-new{
+	float: right;
+	margin-right: 15%;
+}
 .player-scorecard{
 	float: left;
 	width: 100%;
@@ -328,5 +337,11 @@ h1 {
 .odd {
 	color: white; 
 	background-color: #aaaaaa; 
+}
+
+
+
+#scenario-input{
+	resize: none;
 }
 
