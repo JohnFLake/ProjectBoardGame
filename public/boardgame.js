@@ -75,12 +75,8 @@ function drawAnother(){
 	var score = parseInt(document.getElementById("card-upvote-score").innerHTML);
 	var id = parseInt(document.getElementById("card-id").innerHTML);
 	getCardAjax(function(output){
-		console.log(output);
-		output.scenario = replaceSubstring(output.scenario,"<script>","");
-		output.scenario = replaceSubstring(output.scenario,"</script>","");
-		output.title = replaceSubstring(output.title,"</script>","");
-		output.title = replaceSubstring(output.title,"<script>","");
-		console.log(output);
+		output.title = escapeCharacters(output.title);
+		output.scenario = escapeCharacters(output.scenario);
 		$("#card-scenario").html(output.scenario);
 		$("#card-title").html(output.title);
 		$("#card-score").html(output.score); 
@@ -94,6 +90,13 @@ function drawAnother(){
 
 
 
+function escapeCharacters(string){
+    return string.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g,'&gt;').replace(/\//g,'&#x2F'); 
+};
+
+
+
+
 function drawCard(){
 	var score = parseInt(document.getElementById("card-upvote-score").innerHTML);
 	var id = parseInt(document.getElementById("card-id").innerHTML);
@@ -103,13 +106,8 @@ function drawCard(){
 		whosTurn = 1;
 	document.getElementById('draw-new').innerHTML="Draw Card for Player " + whosTurn + ".";
 	getCardAjax(function(output){
-		console.log(output);
-		
-		output.scenario = replaceSubstring(output.scenario,"<script>","");
-		output.scenario = replaceSubstring(output.scenario,"</script>","");
-		output.title = replaceSubstring(output.title,"</script>","");
-		output.title = replaceSubstring(output.title,"<script>","");
-		console.log(output);
+		output.title = escapeCharacters(output.title);
+		output.scenario = escapeCharacters(output.scenario);
 		$("#card-scenario").html(output.scenario);
 		$("#card-title").html(output.title);
 		$("#card-score").html(output.score); 
