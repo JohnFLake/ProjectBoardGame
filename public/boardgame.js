@@ -9,8 +9,9 @@ var cardScore;
 */
 window.onload = function myFunc(){
 	$("#frame").css({float: 'none', margin: 'auto'});
+	$("#frame").css({visibility: 'hidden'});
 	$("#move-player-wrapper").css({visibility: 'hidden'});
-	document.getElementById('game-content').innerHTML=`<h1> Welcome to the Game!</h1>
+	document.getElementById('game-rules').innerHTML=`<h1> Welcome to the Game!</h1>
 		<div id="rules">
 		<ol style="text-align:left">
 			<li>You start on space #1.  The goal is to reach space #32.</li>
@@ -123,7 +124,10 @@ function drawCard(){
 
 function gameplay(){
 	$("#frame").css({float: 'left'});
-	//$("#frame").css({"padding": "5%"});
+	$("#frame").css({visibility: 'visible'});
+	$("#game-rules").css({visibility: 'hidden'});
+	$("#game-rules").css({width: '0px', height: '0px'});
+	$("#game-rules").html("");
 	$("#move-player-wrapper").css({visibility: 'visible'});
 	$("#wrapper").css({"margin": "none", "width":"100%","height":"100%"});
 	/*

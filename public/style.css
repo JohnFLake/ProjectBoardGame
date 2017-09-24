@@ -147,6 +147,15 @@ h1 {
 	height: 100%;
 }
 
+#game-rules{
+	text-align: center; 
+	width: 50%;
+	height: 600px;
+	margin: auto;
+	margin-top: 10%;
+	border: 3px inset;
+}
+
 
 #game-content{
 	background-size: 100%;
@@ -195,6 +204,7 @@ h1 {
 	height: 50%;
 	padding-top: 6%;
 	padding-left: 5%;
+	margin-bottom: 0%;
 }
 #card-upvote{
 	float: left;
@@ -240,7 +250,10 @@ h1 {
 .draw-button{
 	color: white; 
 	font-size: 20px;
-	margin: auto;
+	margin-top: 5%; 
+	margin-bottom: 5%; 
+	margin-left: 1%; 
+	margin-right: 5%; 
 	height: 40%;
 	width: 30%;
 	background-color: #aa0000;
@@ -251,12 +264,10 @@ h1 {
 
 #draw-another{
 	float: left; 
-	margin-left: 15%;
 }
 
 #draw-new{
 	float: right;
-	margin-right: 15%;
 }
 .player-scorecard{
 	float: left;
