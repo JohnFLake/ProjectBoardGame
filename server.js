@@ -15,10 +15,10 @@ function escapeCharacters(string){
 app.use(bodyParser.json());
 var pool = mysql.createPool({
 	connectionLimit: 100,
-	host: "fling.seas.upenn.edu",
-	user: "johnlake",
-	password: "myboardpass",
-	database: "johnlake"
+	host: "MYHOST",
+	user: "NAME",
+	password: "PASS",
+	database: "DB"
 });
 
 
@@ -29,7 +29,7 @@ app.get('/', function (req, res) {
 app.get('/card', function (req, res) {
 	pool.getConnection(function(err,connection) {
 		if (err) throw err;
-		connection.query("select * from (select * from cards where score > 0 order by RAND() LIMIT 3) as topitems order by score desc LIMIT 1",function (err, result, fields) {
+		connection.query("select * from (select * from cards where score > -5 order by RAND() LIMIT 3) as topitems order by score desc LIMIT 1",function (err, result, fields) {
 			connection.release();
 			if (err) throw err;
 			res.send(result[0]);
