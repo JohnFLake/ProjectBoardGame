@@ -11,14 +11,15 @@ window.onload = function myFunc(){
 	$("#frame").css({float: 'none', margin: 'auto'});
 	$("#frame").css({visibility: 'hidden'});
 	$("#move-player-wrapper").css({visibility: 'hidden'});
-	document.getElementById('game-rules').innerHTML=`<h1> Welcome to the Game!</h1>
-		<div id="rules">
-		<ol style="text-align:left">
+	document.getElementById('game-rules').innerHTML=`
+		<h1> Let's play a boardgame!</h1>
+		<ol id ="rules-list">
 			<li>You start on space #1.  The goal is to reach space #32.</li>
 			<li>You control the game. </li>
 			<li>Every turn, you draw a card.</li>
 			<li>The card tells you what to do.</li>
 			<li>You do it.</li>
+			<li>If you and your fellow players don't like the card, get a new one.</li>
 			<li>You adjust the player spaces.</li>
 			<li>USERS submit the cards. </li>
 			<li>Upvote cards you like.</li>
@@ -27,7 +28,6 @@ window.onload = function myFunc(){
 		</ol>
 		<br>
 		<button id="play-button" onclick="gameplay()">Continue</button>
-		</div>
 	`;
 };
 
@@ -108,6 +108,8 @@ function drawCard(){
 	getCardAjax(function(output){
 		output.title = escapeCharacters(output.title);
 		output.scenario = escapeCharacters(output.scenario);
+		$("#card-scenario").empty();
+		$("#card-title").empty();
 		$("#card-scenario").html(output.scenario);
 		$("#card-title").html(output.title);
 		$("#card-score").html(output.score); 
